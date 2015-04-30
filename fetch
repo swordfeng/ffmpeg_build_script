@@ -1,0 +1,26 @@
+#!/bin/bash
+
+SOURCE=$1
+
+SCHEME=`echo $SOURCE | sed 's/^\(.*\):\/\/.*$/\1/'`
+FILENAME=`basename "$SOURCE" | sed 's/\?.*//'`
+EXTNAME=`echo $FILENAME | sed 's/^.*\.\(.*\)$/\1/'`
+
+
+if [ "$SCHEME" == "git" ] || [ "$EXTNAME" == "git" ]
+then
+	if [ -e ${FILENAME%%.git} ]; then
+		cd ${FILENAME%%.git}
+		git fetch --depth 1
+		git rebase
+	else
+		git clone $SOURCE --depth 1
+	fi
+elif [ "$SCHEME" == "http" ] || [ "$SCHEME" == "https" ] || [ "$SCHEME" == "ftp" ]
+then
+	curl -L -o "$FILENAME" "$SOURCE"
+	tar xvf "$FILENAME"
+else
+	echo Unknown scheme: $SCHEME
+fi
+
