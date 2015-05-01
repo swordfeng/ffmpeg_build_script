@@ -2,6 +2,7 @@
 
 export TARGET_DIR=`pwd`/build_dir
 export SOURCE_DIR=`pwd`/src_dir
+export PKG_CONFIG="$(which pkg-config) --static"
 
 if [ ! -e $TARGET_DIR ];then
 	mkdir $TARGET_DIR

@@ -29,6 +29,7 @@
 ./fetch git://anongit.freedesktop.org/fribidi/fribidi # required by libass
 ./fetch https://github.com/libass/libass.git
 ./fetch git://git.gnome.org/libxml2 # required by libbluray
+./fetch https://github.com/cgwalters/expat-git-mirror.git # required by libbluray
 ./fetch git://git.videolan.org/libudfread.git # optional required by libbluray
 ./fetch git://git.videolan.org/libbluray.git
 

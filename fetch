@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./compile-env.sh
+source ./compile-env
 cd $SOURCE_DIR
 
 SOURCE=$1
@@ -14,11 +14,11 @@ if [ "$SCHEME" == "git" ] || [ "$EXTNAME" == "git" ]
 then
 	if [ -e ${FILENAME%%.git} ]; then
 		cd ${FILENAME%%.git}
-		git fetch --depth 1
+		git fetch --depth 1 || git fetch
 		git rebase
 		cd ..
 	else
-		git clone $SOURCE --depth 1
+		git clone $SOURCE --depth 1 || git clone $SOURCE
 	fi
 elif [ "$SCHEME" == "http" ] || [ "$SCHEME" == "https" ] || [ "$SCHEME" == "ftp" ]
 then
