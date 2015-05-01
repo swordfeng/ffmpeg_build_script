@@ -37,7 +37,7 @@ cd $BUILD_DIR/ffmpeg*
 --disable-libxcb-shm \
 --disable-libxcb-xfixes \
 --disable-libxcb-shape
-make -j 3 #&& make install
+make -j 3 && make install
 #CFLAGS="--static -I$TARGET_DIR/include" LDFLAGS="-static -L${TARGET_DIR}/lib -lm -lstdc++" \
 #--extra-cflags="--static -I${TARGET_DIR}/include" --extra-ldflags="-L${TARGET_DIR}/lib -lm -lstdc++" 
 # \
