@@ -1,7 +1,7 @@
 #!/bin/sh
 jval=3
 
-source ./compile-env.sh
+source ./compile-env
 
 echo "*** Building yasm ***"
 cd $SOURCE_DIR/yasm*

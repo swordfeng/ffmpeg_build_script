@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ./compile-env.sh
+source ./compile-env
 
 cd $SOURCE_DIR/ffmpeg*
 ./configure \
@@ -40,5 +40,5 @@ cd $SOURCE_DIR/ffmpeg*
 --disable-libxcb-shm \
 --disable-libxcb-xfixes \
 --disable-libxcb-shape
-#make -j 3 && make install
+make -j 3 && make install
 
