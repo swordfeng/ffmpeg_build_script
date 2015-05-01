@@ -2,7 +2,7 @@
 
 source ./compile-env.sh
 
-cd $BUILD_DIR/ffmpeg*
+cd $SOURCE_DIR/ffmpeg*
 ./configure \
 --prefix="${TARGET_DIR}" \
 --pkg-config-flags="--static" \
@@ -15,11 +15,14 @@ cd $BUILD_DIR/ffmpeg*
 --disable-ffserver \
 --disable-doc \
 --disable-devices \
+--disable-hwaccels \
 --disable-sdl \
 --disable-xlib \
 --enable-gpl --enable-version3 --enable-nonfree \
 --enable-gray --enable-runtime-cpudetect \
 --enable-fontconfig \
+--enable-ladspa \
+--enable-libbluray \
 --enable-libfaac \
 --enable-libfdk-aac \
 --enable-libmp3lame \
@@ -37,7 +40,5 @@ cd $BUILD_DIR/ffmpeg*
 --disable-libxcb-shm \
 --disable-libxcb-xfixes \
 --disable-libxcb-shape
-make -j 3 && make install
-#CFLAGS="--static -I$TARGET_DIR/include" LDFLAGS="-static -L${TARGET_DIR}/lib -lm -lstdc++" \
-#--extra-cflags="--static -I${TARGET_DIR}/include" --extra-ldflags="-L${TARGET_DIR}/lib -lm -lstdc++" 
-# \
+#make -j 3 && make install
+

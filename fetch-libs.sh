@@ -1,14 +1,16 @@
 #!/bin/sh
 
-./fetch https://github.com/yasm/yasm.git
+# needs automake, cmake, imake, apache-ant(libbluray)
+
+./fetch https://github.com/yasm/yasm.git # required by ffmpeg
 ./fetch http://zlib.net/zlib-1.2.8.tar.xz
 ./fetch http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
 ./fetch http://git.tukaani.org/xz.git
-./fetch http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.5.1.tar.bz2
-./fetch git://people.freedesktop.org/~aplattner/libvdpau
-./fetch http://dl.sourceforge.net/project/libpng/libpng16/1.6.17/libpng-1.6.17.tar.xz
-./fetch http://downloads.xiph.org/releases/ogg/libogg-1.3.2.tar.xz
-./fetch http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.xz
+#./fetch http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.5.1.tar.bz2
+#./fetch git://people.freedesktop.org/~aplattner/libvdpau
+./fetch http://downloads.sourceforge.net/project/libpng/libpng16/1.6.17/libpng-1.6.17.tar.xz # required by libbluray and many others
+./fetch http://downloads.xiph.org/releases/ogg/libogg-1.3.2.tar.xz # required by libvorbis
+./fetch http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.xz # required by libtheora
 ./fetch http://downloads.xiph.org/releases/theora/libtheora-1.2.0alpha1.tar.xz
 ./fetch https://github.com/webmproject/libvpx.git
 ./fetch http://downloads.sourceforge.net/faac/faac-1.28.tar.bz2
@@ -23,5 +25,11 @@
 ./fetch http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.93.tar.bz2
 ./fetch https://files.dyne.org/frei0r/releases/frei0r-plugins-1.4.tar.gz
 ./fetch http://tipok.org.ua/downloads/media/aacplus/libaacplus/libaacplus-2.0.2.tar.gz
+./fetch http://www.ladspa.org/download/ladspa_sdk.tgz
+./fetch git://anongit.freedesktop.org/fribidi/fribidi # required by libass
+./fetch https://github.com/libass/libass.git
+./fetch git://git.gnome.org/libxml2 # required by libbluray
+./fetch git://git.videolan.org/libudfread.git # optional required by libbluray
+./fetch git://git.videolan.org/libbluray.git
 
 ./fetch git://source.ffmpeg.org/ffmpeg.git

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ./compile-env.sh
+cd $SOURCE_DIR
+
 SOURCE=$1
 
 SCHEME=`echo $SOURCE | sed 's/^\(.*\):\/\/.*$/\1/'`
