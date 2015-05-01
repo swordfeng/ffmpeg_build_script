@@ -13,6 +13,7 @@ then
 		cd ${FILENAME%%.git}
 		git fetch --depth 1
 		git rebase
+		cd ..
 	else
 		git clone $SOURCE --depth 1
 	fi
@@ -20,6 +21,16 @@ elif [ "$SCHEME" == "http" ] || [ "$SCHEME" == "https" ] || [ "$SCHEME" == "ftp"
 then
 	curl -L -o "$FILENAME" "$SOURCE"
 	tar xvf "$FILENAME"
+elif [ "$SCHEME" == "hg+http" ] || [ "$SCHEME" == "hg+https" ]
+then
+	if [ -e ${FILENAME} ]; then
+		cd ${FILENAME}
+		hg pull
+		hg update
+		cd ..
+	else
+		hg clone ${SOURCE##hg+}
+	fi
 else
 	echo Unknown scheme: $SCHEME
 fi

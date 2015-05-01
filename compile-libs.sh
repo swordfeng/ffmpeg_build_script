@@ -5,6 +5,7 @@ source ./compile-env.sh
 
 echo "*** Building yasm ***"
 cd $BUILD_DIR/yasm*
+./autogen.sh
 ./configure --prefix=$TARGET_DIR
 make -j $jval
 make install
@@ -122,13 +123,12 @@ make install
 
 echo "*** Building openh264 ***"
 cd $BUILD_DIR/openh264*
-sed -i -e "s/PREFIX=.*\b/PREFIX=${TARGET_DIR}/" Makefile
-make -j $jval
-make install
+PREFIX=${TARGET_DIR} make -e -j $jval
+PREFIX=${TARGET_DIR} make -e install
 
 echo "*** Building x265 ***"
 cd $BUILD_DIR/x265
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DENABLE_SHARED=OFF source
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DENABLE_SHARED=OFF -DYASM_EXECUTABLE=$TARGET_DIR/bin/yasm source
 make -j $jval
 make install
 
