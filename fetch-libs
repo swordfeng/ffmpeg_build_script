@@ -21,7 +21,7 @@
 ./fetch https://github.com/cisco/openh264.git
 ./fetch hg+https://bitbucket.org/multicoreware/x265
 ./fetch https://github.com/mstorsjo/fdk-aac.git
-./fetch http://download.savannah.gnu.org/releases/freetype/freetype-2.5.5.tar.gz
+./fetch http://download.savannah.gnu.org/releases/freetype/freetype-2.5.5.tar.gz # also required by libbluray and other libs
 ./fetch http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.93.tar.bz2
 ./fetch https://files.dyne.org/frei0r/releases/frei0r-plugins-1.4.tar.gz
 ./fetch http://tipok.org.ua/downloads/media/aacplus/libaacplus/libaacplus-2.0.2.tar.gz

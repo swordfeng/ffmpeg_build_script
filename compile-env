@@ -16,3 +16,5 @@ export PKG_CONFIG_PATH="${TARGET_DIR}/lib/pkgconfig"
 export  PKG_CONFIG_LIBDIR="${TARGET_DIR}/lib/pkgconfig"
 
 export PATH="${TARGET_DIR}/bin:$PATH"
+
+export jval=4

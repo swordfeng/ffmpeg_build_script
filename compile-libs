@@ -1,80 +1,79 @@
 #!/bin/sh
-jval=3
 
 source ./compile-env
 
-echo "*** Building yasm ***"
+echo "********************** Building yasm **********************"
 cd $SOURCE_DIR/yasm*
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR
 make -j $jval
 make install
 
-echo "*** Building zlib ***"
+echo "********************** Building zlib **********************"
 cd $SOURCE_DIR/zlib*
 ./configure --prefix=$TARGET_DIR
 make -j $jval
 make install
 
-echo "*** Building bzip2 ***"
+echo "********************** Building bzip2 **********************"
 cd $SOURCE_DIR/bzip2*
 make -j $jval
 make install PREFIX=$TARGET_DIR
 
-echo "*** Building xz ***"
+echo "********************** Building xz **********************"
 cd $SOURCE_DIR/xz*
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building freetype2 ***"
+echo "********************** Building freetype2 **********************"
 cd $SOURCE_DIR/freetype*
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building fontconfig ***"
+echo "********************** Building fontconfig **********************"
 cd $SOURCE_DIR/fontconfig*
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
 
-echo "*** Building libpng ***"
+echo "********************** Building libpng **********************"
 cd $SOURCE_DIR/libpng*
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
 # Ogg before vorbis
-echo "*** Building libogg ***"
+echo "********************** Building libogg **********************"
 cd $SOURCE_DIR/libogg*
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
 # Vorbis before theora
-echo "*** Building libvorbis ***"
+echo "********************** Building libvorbis **********************"
 cd $SOURCE_DIR/libvorbis*
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building libtheora ***"
+echo "********************** Building libtheora **********************"
 cd $SOURCE_DIR/libtheora*
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building livpx ***"
+echo "********************** Building libvpx **********************"
 cd $SOURCE_DIR/libvpx*
-./configure --prefix=$TARGET_DIR --disable-shared
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building faac ***"
+echo "********************** Building faac **********************"
 cd $SOURCE_DIR/faac*
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared # --without-mp4v2
 # FIXME: gcc incompatibility, does not work with log()
@@ -82,50 +81,50 @@ sed -i -e "s|^char \*strcasestr.*|//\0|" common/mp4v2/mpeg4ip.h
 make -j $jval
 make install
 
-echo "*** Building x264 ***"
+echo "********************** Building x264 **********************"
 cd $SOURCE_DIR/x264*
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared --disable-opencl
 make -j $jval
 make install
 
-echo "*** Building xvidcore ***"
+echo "********************** Building xvidcore **********************"
 cd "$SOURCE_DIR/xvidcore/build/generic"
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building lame ***"
+echo "********************** Building lame **********************"
 cd $SOURCE_DIR/lame*
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building opus ***"
+echo "********************** Building opus **********************"
 cd $SOURCE_DIR/opus*
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building openh264 ***"
+echo "********************** Building openh264 **********************"
 cd $SOURCE_DIR/openh264*
 PREFIX=${TARGET_DIR} make -e -j $jval
 PREFIX=${TARGET_DIR} make -e install
 
-echo "*** Building x265 ***"
+echo "********************** Building x265 **********************"
 cd $SOURCE_DIR/x265
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DENABLE_SHARED=OFF -DYASM_EXECUTABLE=$TARGET_DIR/bin/yasm source
 make -j $jval
 make install
 
-echo "*** Building fdkaac ***"
+echo "********************** Building fdkaac **********************"
 cd $SOURCE_DIR/fdk-aac*
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building ladspa ***"
+echo "********************** Building ladspa **********************"
 cd $SOURCE_DIR/ladspa*/src
 make -e -j $jval
 INSTALL_PLUGINS_DIR=$TARGET_DIR/lib/ladspa/ \
@@ -133,7 +132,7 @@ INSTALL_INCLUDE_DIR=$TARGET_DIR/include/ \
 INSTALL_BINARY_DIR=$TARGET_DIR/bin/ \
 make -e install
 
-echo "*** Building fribidi ***"
+echo "********************** Building fribidi **********************"
 cd $SOURCE_DIR/fribidi*
 autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
@@ -142,35 +141,35 @@ sed -i -e "s/^all:.*$/all:/" doc/Makefile
 make -j $jval
 make install
 
-echo "*** Building libass ***"
+echo "********************** Building libass **********************"
 cd $SOURCE_DIR/libass*
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building libxml ***"
+echo "********************** Building libxml **********************"
 cd $SOURCE_DIR/libxml*
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared --without-python
 make -j $jval
 make install
 
-echo "*** Building expat ***"
+echo "********************** Building expat **********************"
 cd $SOURCE_DIR/expat*
 autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building libudfread ***"
+echo "********************** Building libudfread **********************"
 cd $SOURCE_DIR/libudfread*
 autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install
 
-echo "*** Building libbluray ***"
+echo "********************** Building libbluray **********************"
 cd $SOURCE_DIR/libbluray*
 autoreconf -fiv
 if [ -e $SOURCE_DIR/libudfread* ]; then

@@ -22,10 +22,12 @@ cd $SOURCE_DIR/ffmpeg*
 --enable-gray --enable-runtime-cpudetect \
 --enable-fontconfig \
 --enable-libbluray \
+--enable-libfreetype \
 --enable-ladspa \
 --enable-libfaac \
 --enable-libfdk-aac \
 --enable-libmp3lame \
+--enable-libogg \
 --enable-libopus \
 --enable-libtheora \
 --enable-libvorbis \
@@ -40,5 +42,5 @@ cd $SOURCE_DIR/ffmpeg*
 --disable-libxcb-shm \
 --disable-libxcb-xfixes \
 --disable-libxcb-shape
-make && make install
+make -j $jval && make install
 #
