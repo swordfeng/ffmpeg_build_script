@@ -12,6 +12,7 @@ Some of the libraries may be under conflicted licenses.
 *	pkg-config
 *	gettext
 *	libtool
+*	patch
 *	automake
 *	autoconf
 *	make
