@@ -3,7 +3,8 @@
 # needs automake, cmake, imake, apache-ant(libbluray)
 
 ./fetch https://github.com/yasm/yasm.git # required by ffmpeg
-./fetch http://zlib.net/zlib-1.2.8.tar.xz
+./fetch http://www.nasm.us/pub/nasm/releasebuilds/2.11.08/nasm-2.11.08.tar.xz
+./fetch http://zlib.net/zlib-1.2.8.tar.xz # required by libpng
 ./fetch http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
 ./fetch http://git.tukaani.org/xz.git
 #./fetch http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.5.1.tar.bz2
