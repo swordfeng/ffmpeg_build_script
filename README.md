@@ -9,6 +9,9 @@ Some of the libraries may be under conflicted licenses.
 
 #### Requirements ####
 *	gcc&g++ || clang&clang++
+*	pkg-config
+*	gettext
+*	automake
 *	autoconf
 *	make
 *	cmake
