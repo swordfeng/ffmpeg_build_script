@@ -13,3 +13,25 @@ Some of the libraries may be under conflicted licenses.
 *	cmake
 *	imake
 *	ant
+
+####Libraries included now###
+-	codecs
+	*	libfaac
+	*	libfdk-aac
+	*	libmp3lame
+	*	libopus
+	*	libtheora
+	*	libvorbis
+	*	libx264
+	*	libx265
+	*	libxvid
+	*	libvpx
+	*	libopenh264
+-	formats
+	*	libbluray
+-	utils
+	*	fontconfig
+	*	libfreetype
+	*	ladspa
+	*	bzlib
+	*	zlib
