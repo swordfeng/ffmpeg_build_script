@@ -184,6 +184,13 @@ fi
 make -j $jval
 make install
 
+echo "********************** Building aacplus **********************"
+cd $SOURCE_DIR/libaacplus*
+./autogen.sh
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j $jval
+make install
+
 rm -f $TARGET_DIR/lib/*.so
 rm -f $TARGET_DIR/lib/*.so.*
 rm -f $TARGET_DIR/lib/*.la

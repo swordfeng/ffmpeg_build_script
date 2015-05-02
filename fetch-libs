@@ -32,5 +32,6 @@
 ./fetch https://github.com/cgwalters/expat-git-mirror.git # required by libbluray
 ./fetch git://git.videolan.org/libudfread.git # optional required by libbluray
 ./fetch git://git.videolan.org/libbluray.git
+./fetch https://github.com/Distrotech/libaacplus.git
 
 ./fetch git://source.ffmpeg.org/ffmpeg.git
