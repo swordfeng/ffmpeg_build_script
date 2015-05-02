@@ -19,7 +19,7 @@ Some of the libraries may be under conflicted licenses.
 *	imake
 *	ant
 *	git
-*	hg
+*	hg > 2.7
 *	tar
 *	xz, bzip, gz, unzip
 

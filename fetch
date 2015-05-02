@@ -15,7 +15,8 @@ then
 	if [ -e ${FILENAME%%.git} ]; then
 		cd ${FILENAME%%.git}
 		git fetch --depth 1 || git fetch
-		git rebase
+		git checkout -- .
+		git rebase -f
 		cd ..
 	else
 		git clone $SOURCE --depth 1 || git clone $SOURCE
@@ -24,7 +25,7 @@ elif [ "$SCHEME" == "http" ] || [ "$SCHEME" == "https" ] || [ "$SCHEME" == "ftp"
 then
 	curl -L -o "$FILENAME" "$SOURCE"
 	if [ "$EXTNAME" == "zip" ]; then
-		unzip "$FILENAME"
+		unzip -o "$FILENAME"
 	else
 		tar xvf "$FILENAME"
 	fi
@@ -33,7 +34,7 @@ then
 	if [ -e ${FILENAME} ]; then
 		cd ${FILENAME}
 		hg pull
-		hg update
+		hg update -C
 		cd ..
 	else
 		hg clone ${SOURCE##hg+}
