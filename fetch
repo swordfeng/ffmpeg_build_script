@@ -23,7 +23,11 @@ then
 elif [ "$SCHEME" == "http" ] || [ "$SCHEME" == "https" ] || [ "$SCHEME" == "ftp" ]
 then
 	curl -L -o "$FILENAME" "$SOURCE"
-	tar xvf "$FILENAME"
+	if [ "$EXTNAME" == "zip" ]; then
+		unzip "$FILENAME"
+	else
+		tar xvf "$FILENAME"
+	fi
 elif [ "$SCHEME" == "hg+http" ] || [ "$SCHEME" == "hg+https" ]
 then
 	if [ -e ${FILENAME} ]; then

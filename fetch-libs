@@ -33,5 +33,8 @@
 ./fetch git://git.videolan.org/libudfread.git # optional required by libbluray
 ./fetch git://git.videolan.org/libbluray.git
 ./fetch https://github.com/Distrotech/libaacplus.git
+./fetch http://downloads.sourceforge.net/project/bs2b/libbs2b/3.1.0/libbs2b-3.1.0.zip
+./fetch http://caca.zoy.org/files/libcaca/libcaca-0.99.beta19.tar.gz
+
 
 ./fetch git://source.ffmpeg.org/ffmpeg.git

@@ -11,12 +11,17 @@ Some of the libraries may be under conflicted licenses.
 *	gcc&g++ || clang&clang++
 *	pkg-config
 *	gettext
+*	libtool
 *	automake
 *	autoconf
 *	make
 *	cmake
 *	imake
 *	ant
+*	git
+*	hg
+*	tar
+*	xz, bzip, gz, unzip
 
 ####Libraries included now###
 -	codecs
