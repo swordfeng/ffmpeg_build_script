@@ -27,7 +27,6 @@ cd $SOURCE_DIR/ffmpeg*
 --enable-libfaac \
 --enable-libfdk-aac \
 --enable-libmp3lame \
---enable-libogg \
 --enable-libopus \
 --enable-libtheora \
 --enable-libvorbis \
