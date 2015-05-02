@@ -24,9 +24,9 @@ cd $SOURCE_DIR/ffmpeg*
 --enable-libbluray \
 --enable-libfreetype \
 --enable-ladspa \
+--enable-libbs2b \
 --enable-libfaac \
 --enable-libfdk-aac \
---enable-libaacplus \
 --enable-libmp3lame \
 --enable-libopus \
 --enable-libtheora \
@@ -44,3 +44,4 @@ cd $SOURCE_DIR/ffmpeg*
 --disable-libxcb-shape
 make -j $jval && make install
 #
+#--enable-libaacplus \  # conflict with libfdk_aac

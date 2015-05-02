@@ -197,6 +197,22 @@ cd $SOURCE_DIR/libaacplus*
 make -j $jval
 make install || exit
 
+echo "********************** Building libsndfile **********************"
+cd $SOURCE_DIR/libsndfile*
+autoreconf -fiv
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j $jval
+make install || exit
+
+echo "********************** Building libbs2b **********************"
+cd $SOURCE_DIR/libbs2b*
+sed -i -e "s/dist-lzma/dist-xz/" configure.ac
+autoreconf -fiv
+LDFLAGS="$LDFLAGS -lm" \
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j $jval
+make install || exit
+
 rm -f $TARGET_DIR/lib/*.so
 rm -f $TARGET_DIR/lib/*.so.*
 rm -f $TARGET_DIR/lib/*.la
