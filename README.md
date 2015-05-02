@@ -8,7 +8,8 @@ The only depending is gcc/glibc.
 Some of the libraries may be under conflicted licenses.
 
 #### Requirements ####
-*	autoreconf
+*	gcc&g++ || clang&clang++
+*	autoconf
 *	make
 *	cmake
 *	imake
