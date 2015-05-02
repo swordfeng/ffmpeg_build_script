@@ -37,6 +37,14 @@
 ./fetch http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.25.tar.gz # required by libb2sb
 ./fetch http://downloads.sourceforge.net/project/bs2b/libbs2b/3.1.0/libbs2b-3.1.0.zip
 ./fetch http://caca.zoy.org/files/libcaca/libcaca-0.99.beta19.tar.gz
+./fetch http://downloads.xiph.org/releases/celt/celt-0.11.1.tar.gz
+./fetch git://git.sv.gnu.org/libcdio.git
+./fetch http://www.speech.cs.cmu.edu/flite/packed/flite-1.4/flite-1.4-release.tar.bz2
+./fetch https://bitbucket.org/mpyne/game-music-emu.git
+./fetch  http://libgsm.sourcearchive.com/downloads/1.0.13-4/libgsm_1.0.13.orig.tar.gz
+./fetch https://github.com/TimothyGu/libilbc.git
+./fetch https://github.com/Konstanty/libmodplug.git
+./fetch git://git.ffmpeg.org/nut
 
 
 ./fetch git://source.ffmpeg.org/ffmpeg.git
