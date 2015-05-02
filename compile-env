@@ -20,5 +20,6 @@ export PATH="${TARGET_DIR}/bin:$PATH"
 export LDFLAGS="-L$TARGET_DIR/lib/ $LDFLAGS"
 export CFLAGS="-I$TARGET_DIR/include/ $CFLAGS"
 export CXXFLAGS="-I$TARGET_DIR/include/ $CXXFLAGS"
+export CPPFLAGS="-I$TARGET_DIR/include/ $CPPFLAGS"
 
 export jval=4
