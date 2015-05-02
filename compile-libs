@@ -69,7 +69,7 @@ make install || exit
 
 echo "********************** Building libtheora **********************"
 cd $SOURCE_DIR/libtheora*
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared --disable-examples
 make -j $jval
 make install || exit
 
@@ -157,7 +157,7 @@ make install || exit
 echo "********************** Building libxml **********************"
 cd $SOURCE_DIR/libxml*
 ./autogen.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared --without-python
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared --with-minimum
 make -j $jval
 make install || exit
 

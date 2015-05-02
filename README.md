@@ -10,7 +10,7 @@ Some of the libraries may be under conflicted licenses.
 #### Requirements ####
 *	gcc&g++ || clang&clang++
 *	pkg-config
-*	gettext
+*	gettext with autopoint
 *	libtool
 *	patch
 *	automake
@@ -21,8 +21,8 @@ Some of the libraries may be under conflicted licenses.
 *	ant
 *	git
 *	hg > 2.7
-*	tar
-*	xz, bzip, gz, unzip
+*	tar with xz, bzip, gz
+*	unzip
 
 ####Libraries included now###
 -	codecs
