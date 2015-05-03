@@ -165,12 +165,20 @@ fi
 echo "********************** Building x265 **********************"
 cd $SOURCE_DIR/x265
 make clean
-cmake -G "Unix Makefiles" \
-	-DCMAKE_INSTALL_PREFIX=$TARGET_DIR \
-	-DENABLE_SHARED=OFF \
-	-DYASM_EXECUTABLE=$TARGET_DIR/bin/yasm \
-	-DNUMA_ROOT_DIR=$TARGET_DIR \
-	source
+if [ -e $TARGET_DIR/lib/libnuma* ];then
+	cmake -G "Unix Makefiles" \
+		-DCMAKE_INSTALL_PREFIX=$TARGET_DIR \
+		-DENABLE_SHARED=OFF \
+		-DYASM_EXECUTABLE=$TARGET_DIR/bin/yasm \
+		-DNUMA_ROOT_DIR=$TARGET_DIR \
+		source
+else
+	cmake -G "Unix Makefiles" \
+		-DCMAKE_INSTALL_PREFIX=$TARGET_DIR \
+		-DENABLE_SHARED=OFF \
+		-DYASM_EXECUTABLE=$TARGET_DIR/bin/yasm \
+		-DNUMA_ROOT_DIR=OFF \
+fi
 make -j $jval
 make install || exit
 

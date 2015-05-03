@@ -3,6 +3,9 @@
 source ./compile-env
 
 cd $SOURCE_DIR/ffmpeg*
+
+make clean
+
 ./configure \
 --prefix="${TARGET_DIR}" \
 --pkg-config-flags="--static" \
