@@ -95,6 +95,7 @@ make install || exit
 
 echo "********************** Building xvidcore **********************"
 cd "$SOURCE_DIR/xvidcore/build/generic"
+rm $TARGET_DIR/lib/libxvidcore.so* # prevent errors
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
@@ -107,19 +108,31 @@ make install || exit
 
 echo "********************** Building opus **********************"
 cd $SOURCE_DIR/opus*
-./autogen.sh
+autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
 
 echo "********************** Building openh264 **********************"
 cd $SOURCE_DIR/openh264*
-PREFIX=${TARGET_DIR} make -e -j $jval
-PREFIX=${TARGET_DIR} make -e install || exit
+make -j $jval
+PREFIX=$TARGET_DIR make -e install || exit
+
+echo "********************** Building numa **********************"
+cd $SOURCE_DIR/numa*
+./autogen.sh
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j $jval
+make install || exit
 
 echo "********************** Building x265 **********************"
 cd $SOURCE_DIR/x265
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DENABLE_SHARED=OFF -DYASM_EXECUTABLE=$TARGET_DIR/bin/yasm source
+cmake -G "Unix Makefiles" \
+	-DCMAKE_INSTALL_PREFIX=$TARGET_DIR \
+	-DENABLE_SHARED=OFF \
+	-DYASM_EXECUTABLE=$TARGET_DIR/bin/yasm \
+	-DNUMA_ROOT_DIR=$TARGET_DIR \
+	source
 make -j $jval
 make install || exit
 

@@ -20,6 +20,7 @@
 ./fetch http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz
 ./fetch http://downloads.xiph.org/releases/opus/opus-1.1.tar.gz
 ./fetch https://github.com/cisco/openh264.git
+./fetch ftp://oss.sgi.com/www/projects/libnuma/download/nuactl-2.0.10.tar.gz
 ./fetch hg+https://bitbucket.org/multicoreware/x265
 ./fetch https://github.com/mstorsjo/fdk-aac.git
 ./fetch http://download.savannah.gnu.org/releases/freetype/freetype-2.5.5.tar.gz # also required by libbluray and other libs
@@ -45,6 +46,8 @@
 ./fetch https://github.com/TimothyGu/libilbc.git
 ./fetch https://github.com/Konstanty/libmodplug.git
 ./fetch git://git.ffmpeg.org/nut
-
+./fetch http://downloads.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-0.1.3.tar.gz
+./fetch http://downloads.sourceforge.net/project/openjpeg.mirror/2.1.0/openjpeg-2.1.0.tar.gz
+./fetch http://downloads.sourceforge.net/project/quvi/0.9/libquvi/libquvi-0.9.4.tar.xz
 
 ./fetch git://source.ffmpeg.org/ffmpeg.git

@@ -17,9 +17,9 @@ export PKG_CONFIG_LIBDIR="${TARGET_DIR}/lib/pkgconfig"
 
 export PATH="${TARGET_DIR}/bin:$PATH"
 
-export LDFLAGS="-L$TARGET_DIR/lib/"
-export CFLAGS="-I$TARGET_DIR/include/"
-export CXXFLAGS="-I$TARGET_DIR/include/"
-export CPPFLAGS="-I$TARGET_DIR/include/"
+export LDFLAGS="-static -L$TARGET_DIR/lib/"
+export CFLAGS="-static -I$TARGET_DIR/include/"
+export CXXFLAGS="-static -I$TARGET_DIR/include/"
+export CPPFLAGS="-static -I$TARGET_DIR/include/"
 
 export jval=4
