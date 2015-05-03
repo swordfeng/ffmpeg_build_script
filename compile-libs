@@ -178,6 +178,7 @@ else
 		-DENABLE_SHARED=OFF \
 		-DYASM_EXECUTABLE=$TARGET_DIR/bin/yasm \
 		-DNUMA_ROOT_DIR=OFF \
+		source
 fi
 make -j $jval
 make install || exit
