@@ -4,6 +4,7 @@ source ./compile-env
 
 echo "********************** Building yasm **********************"
 cd $SOURCE_DIR/yasm*
+make clean
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR
 make -j $jval
@@ -11,6 +12,7 @@ make install || exit
 
 echo "********************** Building nasm **********************"
 cd $SOURCE_DIR/nasm*
+make clean
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
@@ -18,24 +20,44 @@ make install || exit
 
 echo "********************** Building zlib **********************"
 cd $SOURCE_DIR/zlib*
+make clean
 ./configure --prefix=$TARGET_DIR
 make -j $jval
 make install || exit
 
 echo "********************** Building bzip2 **********************"
 cd $SOURCE_DIR/bzip2*
+make clean
 make -j $jval
 make install PREFIX=$TARGET_DIR || exit
 
 echo "********************** Building xz **********************"
 cd $SOURCE_DIR/xz*
+make clean
 ./autogen.sh
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j $jval
+make install || exit
+
+echo "********************** Building libxml **********************"
+cd $SOURCE_DIR/libxml*
+make clean
+./autogen.sh
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared --with-minimum
+make -j $jval
+make install || exit
+
+echo "********************** Building expat **********************"
+cd $SOURCE_DIR/expat*
+make clean
+autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
 
 echo "********************** Building freetype2 **********************"
 cd $SOURCE_DIR/freetype*
+make clean
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
@@ -43,12 +65,14 @@ make install || exit
 
 echo "********************** Building fontconfig **********************"
 cd $SOURCE_DIR/fontconfig*
+make clean
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
 
 echo "********************** Building libpng **********************"
 cd $SOURCE_DIR/libpng*
+make clean
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
@@ -56,6 +80,7 @@ make install || exit
 # Ogg before vorbis
 echo "********************** Building libogg **********************"
 cd $SOURCE_DIR/libogg*
+make clean
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
@@ -63,24 +88,28 @@ make install || exit
 # Vorbis before theora
 echo "********************** Building libvorbis **********************"
 cd $SOURCE_DIR/libvorbis*
+make clean
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
 
 echo "********************** Building libtheora **********************"
 cd $SOURCE_DIR/libtheora*
+make clean
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared --disable-examples
 make -j $jval
 make install || exit
 
 echo "********************** Building libvpx **********************"
 cd $SOURCE_DIR/libvpx*
+make clean
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
 
 echo "********************** Building faac **********************"
 cd $SOURCE_DIR/faac*
+make clean
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared # --without-mp4v2
 # FIXME: gcc incompatibility, does not work with log()
 sed -i -e "s|^char \*strcasestr.*|//\0|" common/mp4v2/mpeg4ip.h
@@ -89,12 +118,14 @@ make install || exit
 
 echo "********************** Building x264 **********************"
 cd $SOURCE_DIR/x264*
+make clean
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared --disable-opencl
 make -j $jval
 make install || exit
 
 echo "********************** Building xvidcore **********************"
 cd "$SOURCE_DIR/xvidcore/build/generic"
+make clean
 rm $TARGET_DIR/lib/libxvidcore.so* # prevent errors
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
@@ -102,12 +133,14 @@ make install || exit
 
 echo "********************** Building lame **********************"
 cd $SOURCE_DIR/lame*
+make clean
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
 
 echo "********************** Building opus **********************"
 cd $SOURCE_DIR/opus*
+make clean
 autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
@@ -115,18 +148,23 @@ make install || exit
 
 echo "********************** Building openh264 **********************"
 cd $SOURCE_DIR/openh264*
+make clean
 make -j $jval
 PREFIX=$TARGET_DIR make -e install || exit
 
+if [ -e "$SOURCE_DIR/numa*" ];then
 echo "********************** Building numa **********************"
 cd $SOURCE_DIR/numa*
+make clean
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
+fi
 
 echo "********************** Building x265 **********************"
 cd $SOURCE_DIR/x265
+make clean
 cmake -G "Unix Makefiles" \
 	-DCMAKE_INSTALL_PREFIX=$TARGET_DIR \
 	-DENABLE_SHARED=OFF \
@@ -138,6 +176,7 @@ make install || exit
 
 echo "********************** Building fdkaac **********************"
 cd $SOURCE_DIR/fdk-aac*
+make clean
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
@@ -145,6 +184,7 @@ make install || exit
 
 echo "********************** Building ladspa **********************"
 cd $SOURCE_DIR/ladspa*/src
+make clean
 make -j $jval
 INSTALL_PLUGINS_DIR=$TARGET_DIR/lib/ladspa/ \
 INSTALL_INCLUDE_DIR=$TARGET_DIR/include/ \
@@ -153,6 +193,7 @@ make -e install || exit
 
 echo "********************** Building fribidi **********************"
 cd $SOURCE_DIR/fribidi*
+make clean
 autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 # c2man cannot be disabled through configure?
@@ -162,27 +203,15 @@ make install || exit
 
 echo "********************** Building libass **********************"
 cd $SOURCE_DIR/libass*
+make clean
 ./autogen.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make -j $jval
-make install || exit
-
-echo "********************** Building libxml **********************"
-cd $SOURCE_DIR/libxml*
-./autogen.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared --with-minimum
-make -j $jval
-make install || exit
-
-echo "********************** Building expat **********************"
-cd $SOURCE_DIR/expat*
-autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
 
 echo "********************** Building libudfread **********************"
 cd $SOURCE_DIR/libudfread*
+make clean
 autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
@@ -190,6 +219,7 @@ make install || exit
 
 echo "********************** Building libbluray **********************"
 cd $SOURCE_DIR/libbluray*
+make clean
 autoreconf -fiv
 if [ -e $SOURCE_DIR/libudfread* ]; then
 	rm -rf ./contrib/libudfread/src
@@ -205,6 +235,7 @@ make install || exit
 
 echo "********************** Building aacplus **********************"
 cd $SOURCE_DIR/libaacplus*
+make clean
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
@@ -212,6 +243,7 @@ make install || exit
 
 echo "********************** Building libsndfile **********************"
 cd $SOURCE_DIR/libsndfile*
+make clean
 autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
@@ -219,6 +251,7 @@ make install || exit
 
 echo "********************** Building libbs2b **********************"
 cd $SOURCE_DIR/libbs2b*
+make clean
 sed -i -e "s/dist-lzma/dist-xz/" configure.ac
 autoreconf -fiv
 LDFLAGS="$LDFLAGS -lm" \
