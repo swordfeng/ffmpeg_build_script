@@ -20,7 +20,7 @@
 ./fetch http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz
 ./fetch http://downloads.xiph.org/releases/opus/opus-1.1.tar.gz
 ./fetch https://github.com/cisco/openh264.git
-./fetch ftp://oss.sgi.com/www/projects/libnuma/download/nuactl-2.0.10.tar.gz
+./fetch ftp://oss.sgi.com/www/projects/libnuma/download/numactl-2.0.10.tar.gz
 ./fetch hg+https://bitbucket.org/multicoreware/x265
 ./fetch https://github.com/mstorsjo/fdk-aac.git
 ./fetch http://download.savannah.gnu.org/releases/freetype/freetype-2.5.5.tar.gz # also required by libbluray and other libs
