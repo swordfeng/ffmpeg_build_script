@@ -165,7 +165,7 @@ fi
 echo "********************** Building x265 **********************"
 cd $SOURCE_DIR/x265
 make clean
-if [ -e $TARGET_DIR/lib/libnuma* ];then
+if [ -e $TARGET_DIR/lib/libnuma.a ];then
 	cmake -G "Unix Makefiles" \
 		-DCMAKE_INSTALL_PREFIX=$TARGET_DIR \
 		-DENABLE_SHARED=OFF \
