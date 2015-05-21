@@ -45,3 +45,5 @@ Some of the libraries may be under conflicted licenses.
 	*	ladspa
 	*	bzlib
 	*	zlib
+-	others
+	*	libcaca

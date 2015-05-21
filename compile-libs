@@ -240,13 +240,14 @@ fi
 make -j $jval
 make install || exit
 
-echo "********************** Building aacplus **********************"
-cd $SOURCE_DIR/libaacplus*
-make clean
-./autogen.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make -j $jval
-make install || exit
+# libaacplus is now broken (output [libaacplus @ 0x43dda60] libaacplus doesn't support this output format!)
+#echo "********************** Building aacplus **********************"
+#cd $SOURCE_DIR/libaacplus*
+#make clean
+#./autogen.sh
+#./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+#make -j $jval
+#make install || exit
 
 echo "********************** Building libsndfile **********************"
 cd $SOURCE_DIR/libsndfile*
@@ -266,9 +267,97 @@ LDFLAGS="$LDFLAGS -lm" \
 make -j $jval
 make install || exit
 
+echo "********************** Building libcaca **********************"
+cd $SOURCE_DIR/libcaca*
+make clean
+autoreconf -fiv
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j $jval
+make install-exec || exit
+
+# libcelt is not necessary
+#echo "********************** Building libcelt **********************"
+#cd $SOURCE_DIR/libcelt*
+#make clean
+#./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+#make -j $jval
+#make install-exec || exit
+
+echo "********************** Building libcdio **********************"
+cd $SOURCE_DIR/libcdio*
+make clean
+./autogen.sh
+sed -i -e "s/exit \$\$rc/exit 0/" doc/Makefile
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+EXEEXT=.1 make -e -j $jval
+make install || exit
+
+echo "********************** Building libgme **********************"
+cd $SOURCE_DIR/game-music-emu*
+make clean
+cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DBUILD_SHARED_LIBS=off .
+make -j $jval
+make install || exit
+
+echo "********************** Building libgsm **********************"
+cd $SOURCE_DIR/gsm*
+make clean
+mkdir -p $TARGET_DIR/include/gsm
+make -j $jval INSTALL_ROOT="${TARGET_DIR}" GSM_INSTALL_INC="${TARGET_DIR}/include/gsm" install || exit
+
+echo "********************** Building libilbc **********************"
+cd $SOURCE_DIR/libilbc*
+make clean
+cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DBUILD_SHARED_LIBS=off .
+make -j $jval
+make install || exit
+
+echo "********************** Building libmodplug **********************"
+cd $SOURCE_DIR/libmodplug*
+make clean
+autoreconf -fiv
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j $jval
+make install || exit
+
+echo "********************** Building libnut **********************"
+cd $SOURCE_DIR/nut*/src/trunk
+make clean
+make -j $jval
+make prefix=$TARGET_DIR install || exit
+
+echo "********************** Building opencore-amr **********************"
+cd $SOURCE_DIR/opencore-amr*
+make clean
+autoreconf -fiv
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j $jval
+make install || exit
+
+echo "********************** Building openjpeg **********************"
+cd $SOURCE_DIR/openjpeg*
+sed -i -e "s/add_subdirectory\(thirdparty\)//" CMakeLists.txt
+make clean
+cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DBUILD_SHARED_LIBS=off .
+make -j $jval
+make install || exit
+make -j $jval INSTALL_TOP=$TARGET_DIR pc > $TARGET_DIR/lib/pkgconfig/lua.pc
+cat >> $TARGET_DIR/lib/pkgconfig/lua.pc <<EOF
+Name: Lua
+Description: An Extensible Extension Language
+Version: \${version}
+Requires: 
+Libs: -L\${libdir} -llua -lm
+Cflags: -I\${includedir}
+EOF
+
+# build libquvi
+echo "********************** Building lua **********************"
+cd $SOURCE_DIR/lua*
+make clean
+make -j $jval INSTALL_TOP=$TARGET_DIR generic 
+make -j $jval INSTALL_TOP=$TARGET_DIR install || exit
+
 rm -f $TARGET_DIR/lib/*.so
 rm -f $TARGET_DIR/lib/*.so.*
 rm -f $TARGET_DIR/lib/*.la
-
-
-
