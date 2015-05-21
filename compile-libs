@@ -335,12 +335,28 @@ make -j $jval
 make install || exit
 
 echo "********************** Building openjpeg **********************"
-cd $SOURCE_DIR/openjpeg*
+cd $SOURCE_DIR/openjpeg-1*
 sed -i -e "s/add_subdirectory\(thirdparty\)//" CMakeLists.txt
 make clean
 cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DBUILD_SHARED_LIBS=off .
 make -j $jval
 make install || exit
+
+# openjpeg2 not supported now
+#echo "********************** Building openjpeg2 **********************"
+#cd $SOURCE_DIR/openjpeg-2*
+#sed -i -e "s/add_subdirectory\(thirdparty\)//" CMakeLists.txt
+#make clean
+#cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DBUILD_SHARED_LIBS=off .
+#make -j $jval
+#make install || exit
+
+# build libquvi
+echo "********************** Building lua **********************"
+cd $SOURCE_DIR/lua*
+make clean
+make -j $jval INSTALL_TOP=$TARGET_DIR generic 
+make -j $jval INSTALL_TOP=$TARGET_DIR install || exit
 make -j $jval INSTALL_TOP=$TARGET_DIR pc > $TARGET_DIR/lib/pkgconfig/lua.pc
 cat >> $TARGET_DIR/lib/pkgconfig/lua.pc <<EOF
 Name: Lua
@@ -350,13 +366,6 @@ Requires:
 Libs: -L\${libdir} -llua -lm
 Cflags: -I\${includedir}
 EOF
-
-# build libquvi
-echo "********************** Building lua **********************"
-cd $SOURCE_DIR/lua*
-make clean
-make -j $jval INSTALL_TOP=$TARGET_DIR generic 
-make -j $jval INSTALL_TOP=$TARGET_DIR install || exit
 
 rm -f $TARGET_DIR/lib/*.so
 rm -f $TARGET_DIR/lib/*.so.*

@@ -57,7 +57,7 @@ make clean
 --disable-libxcb-shm \
 --disable-libxcb-xfixes \
 --disable-libxcb-shape
-make -j $jval #&& make install
+make -j $jval && make install
 
 #-Wl,-z,muldefs # if symbol conflict
 #--enable-libaacplus \  # conflict with libfdk_aac
