@@ -287,8 +287,8 @@ echo "********************** Building libcdio **********************"
 cd $SOURCE_DIR/libcdio*
 make clean
 ./autogen.sh
-sed -i -e "s/exit \$\$rc/exit 0/" doc/Makefile
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+sed -i -e "s/exit \$\$rc/exit 0/" doc/Makefile
 EXEEXT=.1 make -e -j $jval
 make install || exit
 
@@ -351,21 +351,21 @@ make install || exit
 #make -j $jval
 #make install || exit
 
-# build libquvi
-echo "********************** Building lua **********************"
-cd $SOURCE_DIR/lua*
-make clean
-make -j $jval INSTALL_TOP=$TARGET_DIR generic 
-make -j $jval INSTALL_TOP=$TARGET_DIR install || exit
-make -j $jval INSTALL_TOP=$TARGET_DIR pc > $TARGET_DIR/lib/pkgconfig/lua.pc
-cat >> $TARGET_DIR/lib/pkgconfig/lua.pc <<EOF
-Name: Lua
-Description: An Extensible Extension Language
-Version: \${version}
-Requires: 
-Libs: -L\${libdir} -llua -lm
-Cflags: -I\${includedir}
-EOF
+# cannot build libquvi for too much dependency...
+#echo "********************** Building lua **********************"
+#cd $SOURCE_DIR/lua*
+#make clean
+#make -j $jval INSTALL_TOP=$TARGET_DIR generic 
+#make -j $jval INSTALL_TOP=$TARGET_DIR install || exit
+#make -j $jval INSTALL_TOP=$TARGET_DIR pc > $TARGET_DIR/lib/pkgconfig/lua.pc
+#cat >> $TARGET_DIR/lib/pkgconfig/lua.pc <<EOF
+#Name: Lua
+#Description: An Extensible Extension Language
+#Version: \${version}
+#Requires: 
+#Libs: -L\${libdir} -llua -lm
+#Cflags: -I\${includedir}
+#EOF
 
 rm -f $TARGET_DIR/lib/*.so
 rm -f $TARGET_DIR/lib/*.so.*
