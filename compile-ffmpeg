@@ -4,14 +4,15 @@ source ./compile-env
 
 cd $SOURCE_DIR/ffmpeg*
 
-make clean
+#make uninstall
+#make clean
 
 ./configure \
 --prefix="${TARGET_DIR}" \
 --pkg-config-flags="--static" \
 --extra-cflags="-static -I${TARGET_DIR}/include" \
 --extra-cxxflags="-static -I${TARGET_DIR}/include" \
---extra-ldflags="-L${TARGET_DIR}/lib" \
+--extra-ldflags="-fopenmp -L${TARGET_DIR}/lib -Wl,-z,muldefs" \
 --enable-small \
 --disable-debug \
 --enable-static \
@@ -53,6 +54,12 @@ make clean
 --enable-libopencore-amrnb \
 --enable-libopencore-amrwb \
 --enable-libopenjpeg \
+--enable-libsoxr \
+--enable-libshine \
+--enable-libspeex \
+--enable-libtwolame \
+--enable-libutvideo \
+--enable-libwavpack \
 --disable-libxcb \
 --disable-libxcb-shm \
 --disable-libxcb-xfixes \
@@ -62,3 +69,4 @@ make -j $jval && make install
 #-Wl,-z,muldefs # if symbol conflict
 #--enable-libaacplus \  # conflict with libfdk_aac
 #--enable-libcelt \  # default decoder is available
+#--enable-libshine \ # conflict with mp3lame

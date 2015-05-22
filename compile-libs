@@ -351,7 +351,7 @@ make install || exit
 #make -j $jval
 #make install || exit
 
-# cannot build libquvi for too much dependency...
+# cannot build libquvi for too much ancient dependency...
 #echo "********************** Building lua **********************"
 #cd $SOURCE_DIR/lua*
 #make clean
@@ -366,6 +366,74 @@ make install || exit
 #Libs: -L\${libdir} -llua -lm
 #Cflags: -I\${includedir}
 #EOF
+
+echo "********************** Building librtmp **********************"
+cd $SOURCE_DIR/rtmpdmp*
+make clean
+make prefix=$TARGET_DIR SHARED= 
+make prefix=$TARGET_DIR SHARED= install || exit
+
+echo "********************** Building orc **********************"
+cd $SOURCE_DIR/orc*
+make clean
+./autogen.sh
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared --disable-gtk-doc
+make -j $jval
+make install || exit
+
+echo "********************** Building libschroedinger **********************"
+cd $SOURCE_DIR/schroedinger*
+make clean
+./autogen.sh
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared --disable-gtk-doc
+CFLAGS="$CFLAGS -Wl,-z,muldefs" make -e -j4
+make install || exit
+
+echo "********************** Building libshine **********************"
+cd $SOURCE_DIR/shine*
+make clean
+autoreconf -fiv
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j4
+make install || exit
+
+echo "********************** Building libsoxr **********************"
+cd $SOURCE_DIR/soxr*
+make clean
+cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DBUILD_SHARED_LIBS=off -DBUILD_TESTS=ON .
+make -j $jval
+make install || exit
+
+echo "********************** Building libspeex **********************"
+cd $SOURCE_DIR/speex*
+make clean
+autoreconf -fiv
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j4
+make install || exit
+
+echo "********************** Building libtwolame **********************"
+cd $SOURCE_DIR/twolame*
+make clean
+./autogen.sh
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j4
+make install || exit
+
+echo "********************** Building libutvideo **********************"
+cd $SOURCE_DIR/libutvideo*
+make clean
+./configure --prefix=$TARGET_DIR
+make -j4
+make install || exit
+
+echo "********************** Building libwavpack **********************"
+cd $SOURCE_DIR/wavpack*
+make clean
+autoreconf -fiv
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j4
+make install || exit
 
 rm -f $TARGET_DIR/lib/*.so
 rm -f $TARGET_DIR/lib/*.so.*

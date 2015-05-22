@@ -50,7 +50,19 @@
 #./fetch http://downloads.sourceforge.net/project/openjpeg.mirror/2.1.0/openjpeg-2.1.0.tar.gz
 ./fetch http://downloads.sourceforge.net/project/openjpeg.mirror/1.5.2/openjpeg-1.5.2.tar.gz
 #./fetch http://www.lua.org/ftp/lua-5.3.0.tar.gz # required by libquvi
-#./fetch http://downloads.sourceforge.net/project/quvi/0.9/libquvi/libquvi-0.9.4.tar.xz
+#./fetch http://curl.haxx.se/download/curl-7.42.1.tar.lzma
+#./fetch http://downloads.sourceforge.net/sourceforge/quvi/libquvi-scripts-0.4.21.tar.xz
+#./fetch http://downloads.sourceforge.net/sourceforge/quvi/libquvi-0.4.1.tar.gz
 ./fetch git://git.ffmpeg.org/rtmpdump
+./fetch git://anongit.freedesktop.org/gstreamer/orc # required by schroedinger
+./fetch http://diracvideo.org/download/schroedinger/schroedinger-1.0.11.tar.gz
+./fetch https://github.com/toots/shine.git
+./fetch https://sourceforge.net/projects/soxr/files/latest/download
+./fetch http://downloads.xiph.org/releases/speex/speex-1.2rc2.tar.gz
+./fetch https://sourceforge.net/projects/twolame/files/latest/download
+./fetch https://github.com/qyot27/libutvideo.git
+./fetch http://www.wavpack.com/wavpack-4.70.0.tar.bz2
+
+
 
 ./fetch git://source.ffmpeg.org/ffmpeg.git
