@@ -4,8 +4,8 @@ source ./compile-env
 
 cd $SOURCE_DIR/ffmpeg*
 
-#make uninstall
-#make clean
+make uninstall
+make clean
 
 ./configure \
 --prefix="${TARGET_DIR}" \
