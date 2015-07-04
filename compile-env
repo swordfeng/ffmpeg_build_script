@@ -22,4 +22,4 @@ export CFLAGS="-I$TARGET_DIR/include/"
 export CXXFLAGS="-I$TARGET_DIR/include/"
 export CPPFLAGS="-I$TARGET_DIR/include/"
 
-export jval=4
+export jval=`nproc`
