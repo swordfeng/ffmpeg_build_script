@@ -7,6 +7,11 @@ Build ffmpeg with several libraries statically.
 The only depending is gcc/glibc.  
 Some of the libraries may be under conflicted licenses.
 
+#### Usage ####
+./fetch-libs
+./compile-libs
+./compile-ffmpeg
+
 #### Requirements ####
 *	gcc&g++ || clang&clang++
 *	pkg-config
