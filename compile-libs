@@ -274,6 +274,7 @@ autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install-exec || exit
+make install
 
 # libcelt is not necessary
 #echo "********************** Building libcelt **********************"
@@ -438,3 +439,5 @@ make install || exit
 rm -f $TARGET_DIR/lib/*.so
 rm -f $TARGET_DIR/lib/*.so.*
 rm -f $TARGET_DIR/lib/*.la
+
+echo "All libs compiled"

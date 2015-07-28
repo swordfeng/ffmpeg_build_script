@@ -4,8 +4,8 @@ source ./compile-env
 
 cd $SOURCE_DIR/ffmpeg*
 
-make uninstall
-make clean
+nohup make uninstall
+nohup make clean
 
 ./configure \
 --prefix="${TARGET_DIR}" \
@@ -63,7 +63,7 @@ make clean
 --disable-libxcb \
 --disable-libxcb-shm \
 --disable-libxcb-xfixes \
---disable-libxcb-shape
+--disable-libxcb-shape || exit
 make -j $jval && make install
 
 #-Wl,-z,muldefs # if symbol conflict

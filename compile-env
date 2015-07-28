@@ -6,6 +6,8 @@ export PKG_CONFIG="$(which pkg-config) --static"
 
 if [ ! -e $TARGET_DIR ];then
 	mkdir $TARGET_DIR
+	mkdir -p $TARGET_DIR/lib
+	ln -s $TARGET_DIR/lib $TARGET_DIR/lib64
 fi
 
 if [ ! -e $SOURCE_DIR ];then
