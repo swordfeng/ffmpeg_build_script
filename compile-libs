@@ -118,7 +118,8 @@ make install || exit
 
 echo "********************** Building x264 **********************"
 cd $SOURCE_DIR/x264*
-make clean
+make unistall
+make distclean
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared --disable-opencl
 make -j $jval
 make install || exit
@@ -378,7 +379,9 @@ echo "********************** Building orc **********************"
 cd $SOURCE_DIR/orc*
 make clean
 ./autogen.sh
+CFLAGS="-Wno-tautological-compare -I$TARGET_DIR/include/" \
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared --disable-gtk-doc
+CFLAGS="-Wno-tautological-compare -I$TARGET_DIR/include/" \
 make -j $jval
 make install || exit
 
