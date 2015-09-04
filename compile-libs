@@ -190,11 +190,12 @@ make clean
 make -j $jval
 make install || exit
 
-echo "********************** Building ladspa **********************"
-cd $SOURCE_DIR/ladspa*/src
-make clean
-make -j $jval
-INSTALL_PLUGINS_DIR=$TARGET_DIR/lib/ladspa/ \
+# ladspa is not available
+#echo "********************** Building ladspa **********************"
+#cd $SOURCE_DIR/ladspa*/src
+#make clean
+#make -j $jval
+#INSTALL_PLUGINS_DIR=$TARGET_DIR/lib/ladspa/ \
 INSTALL_INCLUDE_DIR=$TARGET_DIR/include/ \
 INSTALL_BINARY_DIR=$TARGET_DIR/bin/ \
 make -e install || exit

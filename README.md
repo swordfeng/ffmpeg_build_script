@@ -42,13 +42,33 @@ Some of the libraries may be under conflicted licenses.
 	*	libxvid
 	*	libvpx
 	*	libopenh264
+	*	libpng
+	*	libgme
+	*	libgsm
+	*	libilbc
+	*	libass
+	*	opencore-amr
+	*	openjpeg
+	*	libschroedinger
+	*	libshine
+	*	libspeex
+	*	libtwolame
+	*	libutvideo
+	*	libwavpack
 -	formats
 	*	libbluray
--	utils
+	*	libudfread
+	*	libcdio
+	*	libnut
+	*	librtmp
+-	others
 	*	fontconfig
-	*	libfreetype
-	*	ladspa
+	*	freetype2
 	*	bzlib
 	*	zlib
--	others
+	*	numa
+	*	fribidi
+	*	libbs2b
 	*	libcaca
+	*	libmodplug
+	*	libsoxr

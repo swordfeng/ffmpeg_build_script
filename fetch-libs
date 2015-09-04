@@ -27,7 +27,7 @@
 ./fetch http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.93.tar.bz2
 ./fetch https://files.dyne.org/frei0r/releases/frei0r-plugins-1.4.tar.gz
 #./fetch http://tipok.org.ua/downloads/media/aacplus/libaacplus/libaacplus-2.0.2.tar.gz
-./fetch http://www.ladspa.org/download/ladspa_sdk.tgz
+#./fetch http://www.ladspa.org/download/ladspa_sdk.tgz # ladspa is not available
 ./fetch git://anongit.freedesktop.org/fribidi/fribidi # required by libass
 ./fetch https://github.com/libass/libass.git
 ./fetch git://git.gnome.org/libxml2 # required by libbluray

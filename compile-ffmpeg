@@ -29,7 +29,6 @@ nohup make clean
 --enable-fontconfig \
 --enable-libbluray \
 --enable-libfreetype \
---enable-ladspa \
 --enable-libfaac \
 --enable-libfdk-aac \
 --enable-libmp3lame \
@@ -70,3 +69,4 @@ make -j $jval && make install
 #--enable-libaacplus \  # conflict with libfdk_aac
 #--enable-libcelt \  # default decoder is available
 #--enable-libshine \ # conflict with mp3lame
+#--enable-ladspa \ # not available
