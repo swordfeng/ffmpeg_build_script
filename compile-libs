@@ -287,12 +287,21 @@ make install
 #make install-exec || exit
 
 echo "********************** Building libcdio **********************"
-cd $SOURCE_DIR/libcdio*
+cd $SOURCE_DIR/libcdio
 make clean
 ./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-sed -i -e "s/exit \$\$rc/exit 0/" doc/Makefile
+touch doc/version.texi
 EXEEXT=.1 make -e -j $jval
+make install || exit
+
+# why libcdio-paranoia is not in official libcdio repository?
+echo "********************** Building libcdio-paranoia **********************"
+cd $SOURCE_DIR/libcdio-paranoia
+make clean
+./autogen.sh
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+make -j $jval
 make install || exit
 
 echo "********************** Building libgme **********************"

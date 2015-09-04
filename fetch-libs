@@ -40,6 +40,7 @@
 ./fetch http://caca.zoy.org/files/libcaca/libcaca-0.99.beta19.tar.gz
 #./fetch http://downloads.xiph.org/releases/celt/celt-0.11.1.tar.gz
 ./fetch git://git.sv.gnu.org/libcdio.git
+./fetch https://github.com/rocky/libcdio-paranoia.git
 #./fetch http://www.speech.cs.cmu.edu/flite/packed/flite-1.4/flite-1.4-release.tar.bz2
 ./fetch https://bitbucket.org/mpyne/game-music-emu.git
 ./fetch http://libgsm.sourcearchive.com/downloads/1.0.13-4/libgsm_1.0.13.orig.tar.gz
