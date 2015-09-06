@@ -66,6 +66,7 @@ make install || exit
 echo "********************** Building fontconfig **********************"
 cd $SOURCE_DIR/fontconfig*
 make clean
+./autogen.sh
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j $jval
 make install || exit
