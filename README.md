@@ -28,6 +28,8 @@ Some of the libraries may be under conflicted licenses.
 *	hg > 2.7
 *	tar with xz, bzip, gz
 *	unzip
+*	python2
+*	python2-lxml
 
 ####Libraries included now###
 -	codecs

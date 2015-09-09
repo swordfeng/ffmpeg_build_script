@@ -28,7 +28,7 @@ make install || exit
 echo "********************** Building bzip2 **********************"
 cd $SOURCE_DIR/bzip2*
 make clean
-make -j $jval
+make -j $jval CFLAGS+=' -fPIC'
 make install PREFIX=$TARGET_DIR || exit
 
 echo "********************** Building xz **********************"
@@ -51,7 +51,7 @@ echo "********************** Building expat **********************"
 cd $SOURCE_DIR/expat*
 make clean
 autoreconf -fiv
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared --with-pic
 make -j $jval
 make install || exit
 
@@ -59,16 +59,16 @@ echo "********************** Building freetype2 **********************"
 cd $SOURCE_DIR/freetype*
 make clean
 ./autogen.sh
-./configure --prefix=$TARGET_DIR --enable-static --disable-shared
+./configure --prefix=$TARGET_DIR --enable-static --disable-shared --with-pic
 make -j $jval
 make install || exit
 
 echo "********************** Building fontconfig **********************"
 cd $SOURCE_DIR/fontconfig*
 make clean
-./autogen.sh
+autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
-make -j $jval
+make -j $jval PYTHON=python2
 make install || exit
 
 echo "********************** Building libpng **********************"
