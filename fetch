@@ -16,7 +16,8 @@ then
 		cd ${FILENAME%%.git}
 		git fetch --depth 1 || git fetch
 		git checkout -- .
-		git rebase -f
+		git clean -f
+		git rebase -f master
 		cd ..
 	else
 		git clone $SOURCE --depth 1 || git clone $SOURCE
