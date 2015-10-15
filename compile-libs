@@ -165,7 +165,7 @@ make install
 
 echo "********************** Building x265 **********************"
 cd $SOURCE_DIR/x265
-make clean
+hg purge
 if [ -e $TARGET_DIR/lib/libnuma.a ];then
 	cmake -G "Unix Makefiles" \
 		-DCMAKE_INSTALL_PREFIX=$TARGET_DIR \
