@@ -5,8 +5,9 @@ source ./compile-env
 echo "********************** Building yasm **********************"
 cd $SOURCE_DIR/yasm*
 make clean
-./autogen.sh
-./configure --prefix=$TARGET_DIR
+#./autogen.sh
+#./configure --prefix=$TARGET_DIR
+cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIR .
 make -j $jval
 make install || exit
 
@@ -368,14 +369,14 @@ make install || exit
 #echo "********************** Building lua **********************"
 #cd $SOURCE_DIR/lua*
 #make clean
-#make -j $jval INSTALL_TOP=$TARGET_DIR generic 
+#make -j $jval INSTALL_TOP=$TARGET_DIR generic
 #make -j $jval INSTALL_TOP=$TARGET_DIR install || exit
 #make -j $jval INSTALL_TOP=$TARGET_DIR pc > $TARGET_DIR/lib/pkgconfig/lua.pc
 #cat >> $TARGET_DIR/lib/pkgconfig/lua.pc <<EOF
 #Name: Lua
 #Description: An Extensible Extension Language
 #Version: \${version}
-#Requires: 
+#Requires:
 #Libs: -L\${libdir} -llua -lm
 #Cflags: -I\${includedir}
 #EOF
@@ -383,7 +384,7 @@ make install || exit
 echo "********************** Building librtmp **********************"
 cd $SOURCE_DIR/rtmpdmp*
 make clean
-make prefix=$TARGET_DIR SHARED= 
+make prefix=$TARGET_DIR SHARED=
 make prefix=$TARGET_DIR SHARED= install || exit
 
 echo "********************** Building orc **********************"
