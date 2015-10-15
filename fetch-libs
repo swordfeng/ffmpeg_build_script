@@ -64,7 +64,8 @@ rm -rf $SOURCE_DIR/x264-snapshot*
 ./fetch https://sourceforge.net/projects/twolame/files/latest/download
 ./fetch https://github.com/qyot27/libutvideo.git
 ./fetch http://www.wavpack.com/wavpack-4.75.0.tar.bz2
-
+./fetch https://github.com/foo86/dcadec.git
+#./fetch https://github.com/pandastream/xavs.git
 
 
 ./fetch git://source.ffmpeg.org/ffmpeg.git

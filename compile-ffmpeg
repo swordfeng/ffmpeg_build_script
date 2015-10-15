@@ -57,6 +57,7 @@ nohup make clean
 --enable-libshine \
 --enable-libspeex \
 --enable-libtwolame \
+--enable-libdcadec \
 --enable-libutvideo \
 --enable-libwavpack \
 --disable-libxcb \

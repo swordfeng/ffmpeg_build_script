@@ -198,9 +198,9 @@ make install || exit
 #make clean
 #make -j $jval
 #INSTALL_PLUGINS_DIR=$TARGET_DIR/lib/ladspa/ \
-INSTALL_INCLUDE_DIR=$TARGET_DIR/include/ \
-INSTALL_BINARY_DIR=$TARGET_DIR/bin/ \
-make -e install || exit
+#INSTALL_INCLUDE_DIR=$TARGET_DIR/include/ \
+#INSTALL_BINARY_DIR=$TARGET_DIR/bin/ \
+#make -e install || exit
 
 echo "********************** Building fribidi **********************"
 cd $SOURCE_DIR/fribidi*
@@ -450,6 +450,13 @@ autoreconf -fiv
 ./configure --prefix=$TARGET_DIR --enable-static --disable-shared
 make -j4
 make install || exit
+
+echo "********************** Building dcadec **********************"
+cd $SOURCE_DIR/dcadec*
+make clean
+make -j $jval
+make PREFIX=$TARGET_DIR install || exit
+
 
 rm -f $TARGET_DIR/lib/*.so
 rm -f $TARGET_DIR/lib/*.so.*
