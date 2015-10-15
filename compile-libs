@@ -7,7 +7,7 @@ cd $SOURCE_DIR/yasm*
 make clean
 #./autogen.sh
 #./configure --prefix=$TARGET_DIR
-cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIR .
+cmake -DCMAKE_INSTALL_PREFIX=$TARGET_DIR -DBUILD_SHARED_LIBS=OFF .
 make -j $jval
 make install || exit
 
