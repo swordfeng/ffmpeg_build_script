@@ -18,6 +18,7 @@ Some of the libraries may be under conflicted licenses.
 *	gettext with autopoint
 *	libtool
 *	patch
+*	gperf
 *	automake
 *	autoconf
 *	make
